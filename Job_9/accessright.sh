@@ -11,11 +11,13 @@ echo "$mdpc"
 sudo useradd -m -p $mdpc $prenom-$nom
 
 
-if [ "$role" = "Admin" ]
+if [[ "$role" =~ .*Admin.* ]]
 then
+echo "Ajout de l'utilisateur à la table des administrateur"
 sudo adduser $prenom-$nom sudo
 sudo adduser $prenom-$nom adm
 else
+echo "l'utilisateur n'est que $role"
 fi
 done
 exit 0
